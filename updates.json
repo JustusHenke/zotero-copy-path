@@ -1,0 +1,18 @@
+{
+  "addons": {
+    "copy-file-path@justushenke.github.io": {
+      "updates": [
+        {
+          "version": "1.0.0",
+          "update_link": "https://github.com/JustusHenke/zotero-copy-path/releases/download/v1.0.0/copy-file-path.xpi",
+          "update_hash": "sha256:88e6a673dd69728168a1ae6be3134ab8210a28e4a34a44e025df368543083e44",
+          "applications": {
+            "zotero": {
+              "strict_min_version": "9.0"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
