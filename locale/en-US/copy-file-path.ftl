@@ -1,2 +1,2 @@
 copy-file-path-menu-copy =
-    .label = 📋 Copy File Path
+    .label = { $icon } Copy File Path

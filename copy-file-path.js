@@ -25,7 +25,10 @@ CopyFilePath = {
       menus: [
         {
           menuType: "menuitem",
-          label: "\u{1F4CB} Dateipfad kopieren",
+          l10nID: "copy-file-path-menu-copy",
+          onShowing: function (_event, context) {
+            context.setL10nArgs(JSON.stringify({ icon: "\u{1F4CB}" }));
+          },
           onCommand: function () {
             CopyFilePath.handleMenuCommand();
           },
