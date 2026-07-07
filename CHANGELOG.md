@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.1.0] — 2026-07-07
+
+### Fixed
+- Emoji-Icon 📋 via `onShowing` + `setL10nArgs` statt FTL-Literal
+
 ## [1.0.0] — 2026-07-06
 
 ### Added
