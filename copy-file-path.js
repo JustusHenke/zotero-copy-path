@@ -25,12 +25,22 @@ CopyFilePath = {
       menus: [
         {
           menuType: "menuitem",
-          l10nID: "copy-file-path-menu-copy",
+          l10nID: "copy-file-path-menu-pdf",
           onShowing: function (_event, context) {
             context.setL10nArgs(JSON.stringify({ icon: "\u{1F4CB}" }));
           },
           onCommand: function () {
-            CopyFilePath.handleMenuCommand();
+            CopyFilePath.handlePdfCommand();
+          },
+        },
+        {
+          menuType: "menuitem",
+          l10nID: "copy-file-path-menu-doi",
+          onShowing: function (_event, context) {
+            context.setL10nArgs(JSON.stringify({ icon: "\u{1F517}" }));
+          },
+          onCommand: function () {
+            CopyFilePath.handleDoiUrlCommand();
           },
         },
       ],
@@ -46,7 +56,7 @@ CopyFilePath = {
     }
   },
 
-  handleMenuCommand() {
+  handlePdfCommand() {
     try {
       const pane = Zotero.getActiveZoteroPane();
       if (!pane) return;
@@ -69,6 +79,38 @@ CopyFilePath = {
       if (paths.length === 0) return;
 
       this.copyText(paths.join("\n"));
+    } catch (e) {
+      Zotero.logError("CopyFilePath: " + e);
+    }
+  },
+
+  handleDoiUrlCommand() {
+    try {
+      const pane = Zotero.getActiveZoteroPane();
+      if (!pane) return;
+
+      const items = pane.getSelectedItems();
+      if (!items || items.length === 0) return;
+
+      const results = [];
+
+      for (const item of items) {
+        // DOI priorisiert, mit https://doi.org/-Präfix
+        const doi = item.getField("DOI");
+        if (doi) {
+          results.push("https://doi.org/" + doi);
+          continue;
+        }
+        // URL als Fallback
+        const url = item.getField("url");
+        if (url) {
+          results.push(url);
+        }
+      }
+
+      if (results.length === 0) return;
+
+      this.copyText(results.join("\n"));
     } catch (e) {
       Zotero.logError("CopyFilePath: " + e);
     }

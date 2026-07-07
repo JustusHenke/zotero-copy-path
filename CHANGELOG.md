@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0] — 2026-07-07
+
+### Added
+- Zweiter Menüeintrag: 🔗 DOI/URL kopieren
+  - DOI mit `https://doi.org/`-Präfix (priorisiert)
+  - URL als Fallback, wenn keine DOI vorhanden
+
 ## [1.2.0] — 2026-07-07
 
 ### Changed
