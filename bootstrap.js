@@ -15,27 +15,32 @@ function install() {
 }
 
 async function startup({ id, version, rootURI }) {
+  await Zotero.initializationPromise;
   log("Plugin gestartet (Version " + version + ")");
 
-  // Chrome-Registrierung für Locales
-  const aomStartup = Cc[
-    "@mozilla.org/addons/addon-manager-startup;1"
-  ].getService(Ci.amIAddonManagerStartup);
-  const manifestURI = Services.io.newURI(rootURI + "manifest.json");
-  chromeHandle = aomStartup.registerChrome(manifestURI, [
-    ["locale", "copy-file-path", "en-US", "locale/en-US/"],
-    ["locale", "copy-file-path", "de", "locale/de/"],
-  ]);
+  try {
+    // Chrome-Registrierung für Locales
+    const aomStartup = Cc[
+      "@mozilla.org/addons/addon-manager-startup;1"
+    ].getService(Ci.amIAddonManagerStartup);
+    const manifestURI = Services.io.newURI(rootURI + "manifest.json");
+    chromeHandle = aomStartup.registerChrome(manifestURI, [
+      ["locale", "copy-file-path", "en-US", "locale/en-US/"],
+      ["locale", "copy-file-path", "de", "locale/de/"],
+    ]);
 
-  Services.scriptloader.loadSubScript(rootURI + "copy-file-path.js");
-  CopyFilePath.init({ id, version, rootURI });
+    Services.scriptloader.loadSubScript(rootURI + "copy-file-path.js");
+    CopyFilePath.init({ id, version, rootURI });
 
-  // FTL in bereits offene Fenster injizieren
-  for (const win of Zotero.getMainWindows()) {
-    if (win.MozXULElement) win.MozXULElement.insertFTLIfNeeded(FTL_FILE);
+    // FTL in bereits offene Fenster injizieren
+    for (const win of Zotero.getMainWindows()) {
+      if (win.MozXULElement) win.MozXULElement.insertFTLIfNeeded(FTL_FILE);
+    }
+
+    log("Startup abgeschlossen");
+  } catch (e) {
+    Zotero.logError("CopyFilePath startup: " + e);
   }
-
-  log("Startup abgeschlossen");
 }
 
 function onMainWindowLoad({ window }) {
