@@ -2,6 +2,8 @@
 
 Plugin für Zotero 9, das per Rechtsklick PDF-Dateipfade und DOIs/URLs ausgewählter Einträge in die Zwischenablage kopiert.
 
+![Screenshot](screenhot.png)
+
 ## Installation
 
 1. Lade die neueste `.xpi`-Datei von den [Releases](https://github.com/JustusHenke/zotero-copy-path/releases) herunter
