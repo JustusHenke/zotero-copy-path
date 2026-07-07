@@ -1,6 +1,6 @@
 # Copy File Path – Zotero Plugin
 
-Plugin für Zotero, das den Dateipfad ausgewählter Einträge/Anhänge per Rechtsklick in die Zwischenablage kopiert.
+Plugin für Zotero 9, das per Rechtsklick PDF-Dateipfade und DOIs/URLs ausgewählter Einträge in die Zwischenablage kopiert.
 
 ## Installation
 
@@ -14,9 +14,10 @@ Plugin für Zotero, das den Dateipfad ausgewählter Einträge/Anhänge per Recht
 ## Verwendung
 
 1. Wähle einen oder mehrere Einträge in Zotero aus
-2. Mache einen Rechtsklick, um das Kontextmenü zu öffnen
-3. Wähle "Dateipfad kopieren"
-4. Die Dateipfade sind nun in der Zwischenablage und können mit `Strg+V` eingefügt werden
+2. Rechtsklick → Kontextmenü:
+   - **📋 PDF-Pfad kopieren** — kopiert Dateipfade aller `.pdf`-Anhänge
+   - **🔗 DOI/URL kopieren** — kopiert `https://doi.org/…` (DOI bevorzugt, sonst URL)
+3. Die Pfade/Links sind in der Zwischenablage und können mit `Strg+V` eingefügt werden
 
 ## Entwickler-Infos
 
@@ -26,6 +27,8 @@ Plugin für Zotero, das den Dateipfad ausgewählter Einträge/Anhänge per Recht
 - `bootstrap.js` – Lifecycle-Hooks (Chrome-Registrierung, FTL)
 - `copy-file-path.js` – Hauptlogik (MenuManager + Clipboard)
 - `locale/de/` und `locale/en-US/` – Fluent-Lokalisierung
+- `updates.json` – Auto-Update-Manifest
+- `CHANGELOG.md` – Versionshistorie
 - `README.md` – Diese Anleitung
 
 ### Build-Prozess

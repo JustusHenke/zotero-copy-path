@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.2] — 2026-07-07
+
+### Fixed
+- DOI/URL-Kopieren: Parent-Item-Fallback bei selektierten Attachments
+- Deduplizierung via `Set` (keine doppelten DOI-Links)
+
+## [1.3.1] — 2026-07-07
+
+### Fixed
+- Plugin verschwand nach Zotero-Neustart
+  - `await Zotero.initializationPromise` vor MenuManager-Registrierung
+  - `try/catch` um gesamte Startup-Logik
+
 ## [1.3.0] — 2026-07-07
 
 ### Added
