@@ -54,48 +54,16 @@ CopyFilePath = {
       const items = pane.getSelectedItems();
       if (!items || items.length === 0) return;
 
-      let paths = [];
+      const paths = [];
 
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-
-        // 1) Direkt getFilePath() aufrufen — funktioniert bei Attachments
-        //    und ggf. auch bei regulären Items mit verknüpften Dateien
-        try {
-          const fp = item.getFilePath();
-          if (fp) {
-            paths.push(fp);
-            continue;
+      for (const item of items) {
+        for (const attID of item.getAttachments()) {
+          const att = Zotero.Items.get(attID);
+          const path = att.getFilePath();
+          if (path && path.toLowerCase().endsWith(".pdf")) {
+            paths.push(path);
           }
-        } catch (e) {}
-
-        // 2) URL-Feld (für verlinkte URLs)
-        try {
-          const url = item.getField("url");
-          if (url) {
-            paths.push(url);
-            continue;
-          }
-        } catch (e) {}
-
-        // 3) Kind-Attachments durchsuchen (reguläre Items)
-        try {
-          if (item.isRegularItem && item.isRegularItem()) {
-            const attIDs = item.getAttachments();
-            for (let j = 0; j < attIDs.length; j++) {
-              const att = Zotero.Items.get(attIDs[j]);
-              if (!att || !att.isAttachment()) continue;
-
-              const fp = att.getFilePath();
-              if (fp) {
-                paths.push(fp);
-                continue;
-              }
-              const url = att.getField("url");
-              if (url) paths.push(url);
-            }
-          }
-        } catch (e) {}
+        }
       }
 
       if (paths.length === 0) return;

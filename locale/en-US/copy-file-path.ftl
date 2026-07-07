@@ -1,2 +1,2 @@
 copy-file-path-menu-copy =
-    .label = { $icon } Copy File Path
+    .label = { $icon } Copy PDF Path

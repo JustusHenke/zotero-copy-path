@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Copy File Path",
   "version": "1.1.0",
-  "description": "Kopiert den Dateipfad ausgewählter Anhänge in die Zwischenablage.",
+  "description": "Kopiert PDF-Dateipfade ausgewählter Einträge in die Zwischenablage.",
   "homepage_url": "https://github.com/JustusHenke/",
   "author": "JustusHenke",
   "applications": {
