@@ -93,17 +93,34 @@ CopyFilePath = {
       if (!items || items.length === 0) return;
 
       const results = [];
+      const seen = new Set();
 
       for (const item of items) {
+        let source = item;
+
+        // Falls das selektierte Item ein Attachment ist: Parent-Item holen
+        if (item.isAttachment()) {
+          const parentID = item.parentItemID;
+          if (!parentID) continue;
+          source = Zotero.Items.get(parentID);
+          if (!source) continue;
+        }
+
         // DOI priorisiert, mit https://doi.org/-Präfix
-        const doi = item.getField("DOI");
+        const doi = source.getField("DOI");
         if (doi) {
-          results.push("https://doi.org/" + doi);
+          const link = "https://doi.org/" + doi;
+          if (!seen.has(link)) {
+            seen.add(link);
+            results.push(link);
+          }
           continue;
         }
+
         // URL als Fallback
-        const url = item.getField("url");
-        if (url) {
+        const url = source.getField("url");
+        if (url && !seen.has(url)) {
+          seen.add(url);
           results.push(url);
         }
       }

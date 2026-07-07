@@ -3,6 +3,16 @@
     "copy-file-path@justushenke.github.io": {
       "updates": [
         {
+          "version": "1.3.2",
+          "update_link": "https://github.com/JustusHenke/zotero-copy-path/releases/download/v1.3.2/copy-file-path.xpi",
+          "update_hash": "sha256:99be4edeebc2908ff3f66d5efeb674588db213d740773dbb5aae78c486615de9",
+          "applications": {
+            "zotero": {
+              "strict_min_version": "9.0"
+            }
+          }
+        },
+        {
           "version": "1.3.1",
           "update_link": "https://github.com/JustusHenke/zotero-copy-path/releases/download/v1.3.1/copy-file-path.xpi",
           "update_hash": "sha256:977cfa3985601d36880524003557c2f4c8f7e6ae460be9c6d49a1e136b571c88",
