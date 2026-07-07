@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0] — 2026-07-07
+
+### Changed
+- **Nur PDF-Dateipfade** kopieren — keine URLs, keine DOIs
+- Menülabel: „📋 PDF-Pfad kopieren“
+- Vereinfachte `handleMenuCommand`: exakt der vom User getestete Konsolen-Code
+
 ## [1.1.0] — 2026-07-07
 
 ### Fixed
