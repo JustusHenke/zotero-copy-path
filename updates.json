@@ -5,7 +5,7 @@
         {
           "version": "1.0.0",
           "update_link": "https://github.com/JustusHenke/zotero-copy-path/releases/download/v1.0.0/copy-file-path.xpi",
-          "update_hash": "sha256:923543f8b7a9ab365bb14e6121a7547d487a7290a8ca9f674ca45b1cb5ba9cab",
+          "update_hash": "sha256:60b214179a588204392af766b6f6a0aa285c3e9cab3cc36b0e25c3205c4e959f",
           "applications": {
             "zotero": {
               "strict_min_version": "9.0"
