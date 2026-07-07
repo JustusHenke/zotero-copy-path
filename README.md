@@ -2,7 +2,7 @@
 
 Plugin für Zotero 9, das per Rechtsklick PDF-Dateipfade und DOIs/URLs ausgewählter Einträge in die Zwischenablage kopiert.
 
-![Screenshot](screenhot.png)
+![Screenshot](screenshot.png)
 
 ## Installation
 
